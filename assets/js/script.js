@@ -15,10 +15,10 @@ function init() {
 
   formElement.querySelector('input').addEventListener('input', function(e) {
     if (!this.oldValue) {
-      this.oldValue = 1;
+      this.oldValue = '';
     }
 
-    if (/^\d*\.?\d*$/.test(this.value)) {
+    if (/^\d*\.?\d*\.?\d*\.?\d*$/.test(this.value)) {
       this.oldValue = this.value;
     } else {
       this.classList.add('input-error');
@@ -39,19 +39,6 @@ function init() {
 
     if (ip) {
       let ipInfo = await (await fetch(`https://ipinfo.io/${ip}/geo`)).json();
-      // let ipInfo = {
-      //   "ip": "88.119.144.43",
-      //   "hostname": "serv.inmycase.lt",
-      //   "city": "Vilnius",
-      //   "region": "Vilnius",
-      //   "country": "LT",
-      //   "loc": "54.6892,25.2798",
-      //   "org": "AS8764 Telia Lietuva, AB",
-      //   "postal": "01001",
-      //   "timezone": "Europe/Vilnius",
-      //   "readme": "https://ipinfo.io/missingauth"
-      //   };
-
       if (ipInfo.ip) {
         let outputHTML = `<div class="output">
                             <div class="box">
