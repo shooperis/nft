@@ -1,0 +1,218 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #090a19;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+
+  @include size(md) {
+    justify-content: center;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    border: none;
+  }
+
+  #form {
+    padding: 40px;
+    max-width: 500px;
+    width: 75%;
+    margin: 50px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 7px 7px 20px rgb(0 0 0 / 35%);
+    z-index: 10;
+
+    @include size(sm) {
+      margin: 50px 30px;
+      width: 100%;
+    }
+
+    @include size(xs) {
+      margin: 30px 20px;
+      padding: 25px;
+    }
+
+    .header {
+      font-size: 24px;
+      font-weight: 500;
+
+      @include size(xs) {
+        font-size: 20px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+
+        .box {
+          width: calc(100% / 2 - 10px);
+
+          input, button {
+            width: 100%;
+          }
+
+          button {
+            color: #FFFFFF;
+            font-size: 17px;
+            outline: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            border: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+
+            @include size(xs) {
+              font-size: 16px;
+              padding: 8px 12px;
+            }
+
+            &.primary {
+              background-color: #675AFE;
+
+              &:hover {
+                background-color: #3b3493;
+              }
+            }
+
+            &.secondary {
+              background-color: #b65afe;
+
+              &:hover {
+                background-color: #6a3297;
+              }
+            }
+
+            &:disabled {
+              background-color: #999999 !important;
+              cursor: default;
+            }
+          }
+
+          input {
+            padding: 8px 5px 4px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: transparent transparent #999999 transparent;
+            font-size: 22px;
+            border-radius: 0px;
+            outline: none;
+            transition: border-color 0.25s ease-in-out;
+
+            @include size(xs) {
+              font-size: 16px;
+            }
+
+            &::placeholder {
+              font-size: 16px;
+
+              @include size(xs) {
+                font-size: 13px;
+              }
+            }
+
+            &:focus {
+              border-color: transparent transparent #675AFE transparent;
+            }
+
+            &.input-error {
+              border-color: transparent transparent #dc3545 transparent;
+            }
+          }
+
+          &.input-box {
+            position: relative;
+
+            .loading {
+              width: 22px;
+              height: 22px;
+              position: absolute;
+              left: -22px;
+              bottom: 4px;
+
+              @include size(xs) {
+                width: 19px;
+                height: 19px;
+                left: -17px;
+              }
+
+              &.hidden {
+                display: none;
+              }
+            }
+          }
+        }
+
+        &:not(:first-child) {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .result {
+      #output-wrapper {
+        overflow: hidden;
+        max-height: 400px;
+        transition: max-height 0.3s ease-in-out;
+
+        &.hidden {
+          max-height: 0px;
+        }
+
+        .output, .output-error {
+          border-top: 1px solid #d4d4d4;
+          margin-top: 40px;
+          padding-top: 25px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 20px;
+
+          @include size(xs) {
+            margin-top: 30px;
+            padding-top: 20px;
+            gap: 15px;
+          }
+
+          .box {
+            .label {
+              font-size: 12px;
+              line-height: 1.2;
+              margin-bottom: 10px;
+              color: #4f555f;
+
+              @include size(xs) {
+                font-size: 11px;
+              }
+            }
+
+            .value {
+              font-size: 16px;
+              line-height: 1.2;
+              color: #090a19;
+              font-weight: 500;
+
+              @include size(xs) {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
