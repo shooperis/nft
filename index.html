@@ -7,37 +7,45 @@
   <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
   <link rel="stylesheet" href="./assets/css/style.css">
   
-  <title>IP</title>
+  <title>NFT</title>
 </head>
 <body>
 
   <div class="wrapper">
-    <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19108427.56526875!2d11.770295316803383!3d52.92037881618884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slt!4v1676038027074!5m2!1sen!2slt"></iframe>
+    <div class="left-side">
+      <a class="main-logo" href="#">
+        <img src="./assets/images/logo.png" alt="NFT" height="100">
+      </a>
+      <div class="content">
+        <h1 class="title">Lorem ipsum dolor sit amet</h1>
+        <p>Adipisicing elit odit perspiciatis officiis consectetur modi porro doloribus repellat aliquid sequi recusandae atque.</p>
+        <a href="#" class="btn">Modi porro</a>
+      </div>
+    </div>
+    <div class="right-side">
+      <span id="loader"></span>
+      <div class="nft-wrapper">
 
-    
-      <form id="form">
-        <div class="header">
-          <div class="container">
-            <div class="box">What is my IP?</div>
-            <div class="box">
-              <button class="secondary" id="get-my-ip-button">Get my IP</button>
-            </div>
-          </div>
-          <div class="container">
-            <div class="box input-box">
-              <img src="./assets/images/loading.webp" class="loading hidden" id="loading" alt="Loading">
-              <input type="text" name="ip" value="" placeholder="Please enter ip address">
-            </div>
-            <div class="box">
-              <button class="primary" type="submit">Look this IP</button>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="image-wrapper">
+              <div class="border">
+                <img id="image" src="./assets/images/image-unknown.jpg" alt="Unknown NFT">
+                <div id="name">
+                  Unknown NFT
+                </div>
+                <span id="item-id"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="result">
-          <div id="output-wrapper" class="hidden"></div>
+
+        <div class="info">
+          <a class="btn btn-outline" id="link" href="#" target="_blank" rel="noopener noreferrer">Buy</a>
+          <button class="btn" id="next-nft">Get another NFT</button>
         </div>
-      </form>
-   
+      </div>
+    </div>
   </div>
 
   <script src="./assets/js/script.js"></script>

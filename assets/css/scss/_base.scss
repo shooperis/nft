@@ -7,212 +7,221 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  color: #090a19;
+  color: #ffffff;
+  background-color: #0e0e0e;
 }
 
 .wrapper {
-  width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  max-width: 1140px;
+  margin: 0px auto;
+  padding: 50px 30px;
+
+  @include size(lg) {
+    max-width: 960px;
+  }
 
   @include size(md) {
-    justify-content: center;
+    max-width: 720px;
+    flex-wrap: wrap;
   }
 
-  #map {
+  @include size(sm) {
+    max-width: 540px;
+  }
+
+  @include size(xs) {
     width: 100%;
-    height: 100%;
-    position: fixed;
-    border: none;
   }
 
-  #form {
-    padding: 40px;
-    max-width: 500px;
-    width: 75%;
-    margin: 50px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 7px 7px 20px rgb(0 0 0 / 35%);
-    z-index: 10;
+  .left-side, .right-side {
+    width: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include size(md) {
+      width: 80%;
+    }
 
     @include size(sm) {
-      margin: 50px 30px;
       width: 100%;
     }
+  }
 
-    @include size(xs) {
-      margin: 30px 20px;
-      padding: 25px;
+  .left-side {
+    background-image: url('../images/background-left-side.jpg');
+    padding: 75px;
+
+    .main-logo {
+      margin-bottom: 50px;
+      display: inline-block;
+
+      img {
+        height: 80px;
+      }
     }
 
-    .header {
-      font-size: 24px;
-      font-weight: 500;
-
-      @include size(xs) {
-        font-size: 20px;
+    .content {
+      .title {
+        font-size: 42px;
+        font-weight: 300;
+        line-height: 1.4;
       }
 
-      .container {
+      p {
+        font-size: 15px;
+        line-height: 2;
+        margin-top: 20px;
+      }
+
+      .btn {
+        margin-top: 50px;
+      }
+    }
+  }
+
+  .right-side {
+    background-image: url('../images/background-right-side.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    #loader  {
+      top: 0px;
+      width: 0%;
+      height: 3px;
+      background-color: #d1f646;
+      position: absolute;
+      transition: width 5s ease-in-out;
+
+      &.active {
+        width: 100%;
+      }
+    }
+
+    .nft-wrapper {
+      padding: 50px;
+
+      @include size(md) {
+        padding: 70px 50px 50px;
+      }
+
+      .flip-card {
+        width: 300px;
+        height: 400px;
+        perspective: 1000px;
+        
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 1s;
+          transform-style: preserve-3d;
+          box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+          background-color: #141a18;
+          outline: 12px solid rgb(255 255 255 / 25%);
+          border: 1px solid #FFFFFF;
+          background-image: url('../images/logo.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 50%;
+
+          .image-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;     
+            
+            .border {
+              border: 1px solid #d1f646;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-wrap: wrap;
+              flex-direction: column;
+    
+              img {
+                display: block;
+                width: 100%;
+                height: 60%;
+                flex-grow: 1;
+                object-fit: cover;
+    
+                &.animate {
+                  transform: rotateY(180deg);
+                }
+              }
+    
+              #name {
+                width: 100%;
+                display: block;
+                color: #d1f646;
+                background-color: #141a18;
+                padding: 8px 12px;
+              }
+    
+              #item-id {
+                color: #d1f646;
+                font-size: 13px;
+                position: absolute;
+                top: 1px;
+                right: 5px;
+              }
+            }
+          }
+        }
+
+        &.animate .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+      }
+
+      .info {
+        margin: 30px -12px 0px;
         display: flex;
-        justify-content: space-between;
         gap: 10px;
 
-        .box {
-          width: calc(100% / 2 - 10px);
-
-          input, button {
-            width: 100%;
-          }
-
-          button {
-            color: #FFFFFF;
-            font-size: 17px;
-            outline: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            border: none;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-
-            @include size(xs) {
-              font-size: 16px;
-              padding: 8px 12px;
-            }
-
-            &.primary {
-              background-color: #675AFE;
-
-              &:hover {
-                background-color: #3b3493;
-              }
-            }
-
-            &.secondary {
-              background-color: #b65afe;
-
-              &:hover {
-                background-color: #6a3297;
-              }
-            }
-
-            &:disabled {
-              background-color: #999999 !important;
-              cursor: default;
-            }
-          }
-
-          input {
-            padding: 8px 5px 4px;
-            border-width: 2px;
-            border-style: solid;
-            border-color: transparent transparent #999999 transparent;
-            font-size: 22px;
-            border-radius: 0px;
-            outline: none;
-            transition: border-color 0.25s ease-in-out;
-
-            @include size(xs) {
-              font-size: 16px;
-            }
-
-            &::placeholder {
-              font-size: 16px;
-
-              @include size(xs) {
-                font-size: 13px;
-              }
-            }
-
-            &:focus {
-              border-color: transparent transparent #675AFE transparent;
-            }
-
-            &.input-error {
-              border-color: transparent transparent #dc3545 transparent;
-            }
-          }
-
-          &.input-box {
-            position: relative;
-
-            .loading {
-              width: 22px;
-              height: 22px;
-              position: absolute;
-              left: -22px;
-              bottom: 4px;
-
-              @include size(xs) {
-                width: 19px;
-                height: 19px;
-                left: -17px;
-              }
-
-              &.hidden {
-                display: none;
-              }
-            }
-          }
-        }
-
-        &:not(:first-child) {
-          margin-top: 10px;
+        >* {
+          flex-grow: 1;
+          text-align: center;
         }
       }
     }
+  }
 
-    .result {
-      #output-wrapper {
-        overflow: hidden;
-        max-height: 400px;
-        transition: max-height 0.3s ease-in-out;
+}
 
-        &.hidden {
-          max-height: 0px;
-        }
 
-        .output, .output-error {
-          border-top: 1px solid #d4d4d4;
-          margin-top: 40px;
-          padding-top: 25px;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          gap: 20px;
+.btn {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0e0e0e;
+  text-decoration: none;
+  background: #d1f646;
+  border: solid 2px transparent;
+  padding: 8px 22px;
+  display: inline-block;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  cursor: pointer;
 
-          @include size(xs) {
-            margin-top: 30px;
-            padding-top: 20px;
-            gap: 15px;
-          }
+  &:hover {
+    color: #d1f646;
+    background-color: transparent;
+    border-color: #d1f646;
+  }
 
-          .box {
-            .label {
-              font-size: 12px;
-              line-height: 1.2;
-              margin-bottom: 10px;
-              color: #4f555f;
+  &.btn-outline {
+    color: #d1f646;
+    background-color: transparent;
+    border-color: #d1f646;
 
-              @include size(xs) {
-                font-size: 11px;
-              }
-            }
-
-            .value {
-              font-size: 16px;
-              line-height: 1.2;
-              color: #090a19;
-              font-weight: 500;
-
-              @include size(xs) {
-                font-size: 14px;
-              }
-            }
-          }
-        }
-      }
+    &:hover {
+      color: #0e0e0e;
+      background: #d1f646;
+      border-color: transparent;
     }
   }
 }

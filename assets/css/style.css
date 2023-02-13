@@ -8,200 +8,201 @@
 body {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  color: #090a19;
+  color: #ffffff;
+  background-color: #0e0e0e;
 }
 
 .wrapper {
-  width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  max-width: 1140px;
+  margin: 0px auto;
+  padding: 50px 30px;
+}
+@media only screen and (max-width: 1200px) {
+  .wrapper {
+    max-width: 960px;
+  }
 }
 @media only screen and (max-width: 992px) {
   .wrapper {
-    justify-content: center;
+    max-width: 720px;
+    flex-wrap: wrap;
   }
 }
-.wrapper #map {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  border: none;
-}
-.wrapper #form {
-  padding: 40px;
-  max-width: 500px;
-  width: 75%;
-  margin: 50px;
-  background: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.35);
-  z-index: 10;
-}
 @media only screen and (max-width: 768px) {
-  .wrapper #form {
-    margin: 50px 30px;
+  .wrapper {
+    max-width: 540px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .wrapper {
     width: 100%;
   }
 }
-@media only screen and (max-width: 576px) {
-  .wrapper #form {
-    margin: 30px 20px;
-    padding: 25px;
+.wrapper .left-side, .wrapper .right-side {
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media only screen and (max-width: 992px) {
+  .wrapper .left-side, .wrapper .right-side {
+    width: 80%;
   }
 }
-.wrapper #form .header {
-  font-size: 24px;
-  font-weight: 500;
-}
-@media only screen and (max-width: 576px) {
-  .wrapper #form .header {
-    font-size: 20px;
+@media only screen and (max-width: 768px) {
+  .wrapper .left-side, .wrapper .right-side {
+    width: 100%;
   }
 }
-.wrapper #form .header .container {
+.wrapper .left-side {
+  background-image: url("../images/background-left-side.jpg");
+  padding: 75px;
+}
+.wrapper .left-side .main-logo {
+  margin-bottom: 50px;
+  display: inline-block;
+}
+.wrapper .left-side .main-logo img {
+  height: 80px;
+}
+.wrapper .left-side .content .title {
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+.wrapper .left-side .content p {
+  font-size: 15px;
+  line-height: 2;
+  margin-top: 20px;
+}
+.wrapper .left-side .content .btn {
+  margin-top: 50px;
+}
+.wrapper .right-side {
+  background-image: url("../images/background-right-side.jpg");
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-.wrapper #form .header .container .box {
-  width: calc(50% - 10px);
-}
-.wrapper #form .header .container .box input, .wrapper #form .header .container .box button {
-  width: 100%;
-}
-.wrapper #form .header .container .box button {
-  color: #FFFFFF;
-  font-size: 17px;
-  outline: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  border: none;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-@media only screen and (max-width: 576px) {
-  .wrapper #form .header .container .box button {
-    font-size: 16px;
-    padding: 8px 12px;
-  }
-}
-.wrapper #form .header .container .box button.primary {
-  background-color: #675AFE;
-}
-.wrapper #form .header .container .box button.primary:hover {
-  background-color: #3b3493;
-}
-.wrapper #form .header .container .box button.secondary {
-  background-color: #b65afe;
-}
-.wrapper #form .header .container .box button.secondary:hover {
-  background-color: #6a3297;
-}
-.wrapper #form .header .container .box button:disabled {
-  background-color: #999999 !important;
-  cursor: default;
-}
-.wrapper #form .header .container .box input {
-  padding: 8px 5px 4px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: transparent transparent #999999 transparent;
-  font-size: 22px;
-  border-radius: 0px;
-  outline: none;
-  transition: border-color 0.25s ease-in-out;
-}
-@media only screen and (max-width: 576px) {
-  .wrapper #form .header .container .box input {
-    font-size: 16px;
-  }
-}
-.wrapper #form .header .container .box input::-moz-placeholder {
-  font-size: 16px;
-}
-.wrapper #form .header .container .box input::placeholder {
-  font-size: 16px;
-}
-@media only screen and (max-width: 576px) {
-  .wrapper #form .header .container .box input::-moz-placeholder {
-    font-size: 13px;
-  }
-  .wrapper #form .header .container .box input::placeholder {
-    font-size: 13px;
-  }
-}
-.wrapper #form .header .container .box input:focus {
-  border-color: transparent transparent #675AFE transparent;
-}
-.wrapper #form .header .container .box input.input-error {
-  border-color: transparent transparent #dc3545 transparent;
-}
-.wrapper #form .header .container .box.input-box {
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
-.wrapper #form .header .container .box.input-box .loading {
-  width: 22px;
-  height: 22px;
+.wrapper .right-side #loader {
+  top: 0px;
+  width: 0%;
+  height: 3px;
+  background-color: #d1f646;
   position: absolute;
-  left: -22px;
-  bottom: 4px;
+  transition: width 5s ease-in-out;
 }
-@media only screen and (max-width: 576px) {
-  .wrapper #form .header .container .box.input-box .loading {
-    width: 19px;
-    height: 19px;
-    left: -17px;
+.wrapper .right-side #loader.active {
+  width: 100%;
+}
+.wrapper .right-side .nft-wrapper {
+  padding: 50px;
+}
+@media only screen and (max-width: 992px) {
+  .wrapper .right-side .nft-wrapper {
+    padding: 70px 50px 50px;
   }
 }
-.wrapper #form .header .container .box.input-box .loading.hidden {
-  display: none;
+.wrapper .right-side .nft-wrapper .flip-card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
 }
-.wrapper #form .header .container:not(:first-child) {
-  margin-top: 10px;
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  background-color: #141a18;
+  outline: 12px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #FFFFFF;
+  background-image: url("../images/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
 }
-.wrapper #form .result #output-wrapper {
-  overflow: hidden;
-  max-height: 400px;
-  transition: max-height 0.3s ease-in-out;
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner .image-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
-.wrapper #form .result #output-wrapper.hidden {
-  max-height: 0px;
-}
-.wrapper #form .result #output-wrapper .output, .wrapper #form .result #output-wrapper .output-error {
-  border-top: 1px solid #d4d4d4;
-  margin-top: 40px;
-  padding-top: 25px;
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner .image-wrapper .border {
+  border: 1px solid #d1f646;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
 }
-@media only screen and (max-width: 576px) {
-  .wrapper #form .result #output-wrapper .output, .wrapper #form .result #output-wrapper .output-error {
-    margin-top: 30px;
-    padding-top: 20px;
-    gap: 15px;
-  }
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner .image-wrapper .border img {
+  display: block;
+  width: 100%;
+  height: 60%;
+  flex-grow: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.wrapper #form .result #output-wrapper .output .box .label, .wrapper #form .result #output-wrapper .output-error .box .label {
-  font-size: 12px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  color: #4f555f;
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner .image-wrapper .border img.animate {
+  transform: rotateY(180deg);
 }
-@media only screen and (max-width: 576px) {
-  .wrapper #form .result #output-wrapper .output .box .label, .wrapper #form .result #output-wrapper .output-error .box .label {
-    font-size: 11px;
-  }
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner .image-wrapper .border #name {
+  width: 100%;
+  display: block;
+  color: #d1f646;
+  background-color: #141a18;
+  padding: 8px 12px;
 }
-.wrapper #form .result #output-wrapper .output .box .value, .wrapper #form .result #output-wrapper .output-error .box .value {
+.wrapper .right-side .nft-wrapper .flip-card .flip-card-inner .image-wrapper .border #item-id {
+  color: #d1f646;
+  font-size: 13px;
+  position: absolute;
+  top: 1px;
+  right: 5px;
+}
+.wrapper .right-side .nft-wrapper .flip-card.animate .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.wrapper .right-side .nft-wrapper .info {
+  margin: 30px -12px 0px;
+  display: flex;
+  gap: 10px;
+}
+.wrapper .right-side .nft-wrapper .info > * {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.btn {
   font-size: 16px;
-  line-height: 1.2;
-  color: #090a19;
-  font-weight: 500;
+  line-height: 1.5;
+  color: #0e0e0e;
+  text-decoration: none;
+  background: #d1f646;
+  border: solid 2px transparent;
+  padding: 8px 22px;
+  display: inline-block;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  cursor: pointer;
 }
-@media only screen and (max-width: 576px) {
-  .wrapper #form .result #output-wrapper .output .box .value, .wrapper #form .result #output-wrapper .output-error .box .value {
-    font-size: 14px;
-  }
+.btn:hover {
+  color: #d1f646;
+  background-color: transparent;
+  border-color: #d1f646;
+}
+.btn.btn-outline {
+  color: #d1f646;
+  background-color: transparent;
+  border-color: #d1f646;
+}
+.btn.btn-outline:hover {
+  color: #0e0e0e;
+  background: #d1f646;
+  border-color: transparent;
 }/*# sourceMappingURL=style.css.map */
